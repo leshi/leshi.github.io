@@ -1,0 +1,205 @@
+/* Every page has this */
+body {
+  background-color: #eee;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+#box {
+  background-color: white;
+  width: 700px;
+  min-height: 390px;
+  margin: 30px auto 30px auto;
+  padding: 10px 20px;
+  border: 1px solid gray;
+
+  /* Rounded corners */
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+
+  /* Shadow */
+  -moz-box-shadow: 3px 3px 4px #777;
+  -webkit-box-shadow: 3px 3px 4px #777;
+  box-shadow: 3px 3px 4px #777;
+}
+
+#header {
+  padding: 0 10px 0 10px;
+}
+
+#nav {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 4px 0 4px 0;
+  text-align: center;
+  word-spacing: 40px;
+  font-size: .7em;
+  margin-bottom: 40px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  font-style: italic;
+}
+
+#nav a {
+  color: black;
+}
+
+#nav a:hover {
+  color: #200d81;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+  color: #FB6B00;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+h4 {
+  color: #200d81;
+  font-size: 1.1em;
+  font-weight: normal;
+  padding: 0px;
+  margin: 10px 0;
+
+}
+
+p {
+  font-size: .8em;
+}
+
+.small {
+	font-size: .8em;
+}
+
+#qed {
+  text-align: right;
+}
+
+/* Home page shtuff */
+#home {
+  padding-left: 60px;
+}
+
+#home img.me {
+  float: left;
+}
+
+#home img.qr {
+  float: right;
+  margin-right: 30px;
+}
+
+#home span {
+  margin-left: 50px;
+  line-height: 1.4em;
+}
+
+span.name {
+  font-weight: bold;
+  color: #200d81;
+}
+
+span.title {
+  font-size: .8em;
+  font-weight: bold;
+}
+
+span.email {
+  font-size: .8em;
+  font-family: courier;
+}
+
+span.lab {
+  font-size: .8em;
+}
+
+span.department {
+  font-size: .8em;
+}
+
+span.institution {
+  font-size: .8em;
+}
+
+
+/* Research shtuff */
+#research li {
+  font-size: .7em;
+  margin-bottom: 10px;
+}
+
+#research ul {
+  padding: 0 0 0 15px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+span.pub {
+  font-weight: bold;
+}
+
+span.award {
+  color: #ff2222;
+  font-style: italic;
+}
+
+span.press {
+  font-family: courier;
+  color: #200d81;
+}
+
+/* Teaching stuff */
+#teaching li {
+  font-size: .8em;
+  margin-bottom: 4px;
+}
+
+#teaching ul {
+  padding: 0 0 0 25px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+/* Personal stuff */
+#personal li {
+  font-size: .8em;
+  margin-bottom: 4px;
+}
+
+#personal ul {
+  padding: 0 0 0 25px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+/* Random */
+#random li {
+  font-size: .8em;
+  margin-bottom: 4px;
+}
+
+#random ul {
+  padding: 0 0 0 25px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+
+/* Code */
+p.code {
+  margin-left: 10px;
+  font-family: courier;
+  border: 1px dashed #aaa;
+  width: 90%;
+  padding: 4px;
+  background-color: #eee;
+}

@@ -1,0 +1,63 @@
+<html>
+<head>
+  <script>
+    var invocation = new XMLHttpRequest();
+    var url = 'http://abstract.cs.washington.edu/~aczeskis/cors/t.php';
+    var invocationHistoryText;
+    var body = 'hi';
+    
+    function callOtherDomain(){
+        if(invocation)
+        {
+            invocation.open('POST', url, true);
+            invocation.setRequestHeader('Content-Type', 'text/plain');
+						invocation.withCredentials = "true";
+            //invocation.onreadystatechange = handler;
+            invocation.send(body); 
+        }
+        else
+        {
+            invocationHistoryText = "No Invocation TookPlace At All";
+            var textNode = document.createTextNode(invocationHistoryText);
+            var textDiv = document.getElementById("textDiv");
+            textDiv.appendChild(textNode);
+        }
+        
+    }
+    function handler(evtXHR)
+    {
+        if (invocation.readyState == 4)
+        {
+                if (invocation.status == 200)
+                {
+                    var response = invocation.responseText;
+                    //var invocationHistory = response.getElementsByTagName('invocationHistory').item(0).firstChild.data;
+                    invocationHistoryText = document.createTextNode(response);
+                    var textDiv = document.getElementById("textDiv");
+                    textDiv.appendChild(invocationHistoryText);
+                    
+                }
+                else
+                {
+                    alert("Invocation Errors Occured " + invocation.readyState + " and the status is " + invocation.status);
+                }
+        }
+        else
+        {
+            dump("currently the application is at" + invocation.readyState);
+        }
+    }
+  </script>
+</head>
+<body>
+  <h1> Yo! </h1>
+    <form id="controlsToInvoke" action=""> 
+        <p> 
+        <input type="button" value="Click to Invoke Another Site" onclick="callOtherDomain()" /> 
+        </p>    
+    </form> 
+    <div id="textDiv"> 
+      foo
+    </div>
+</body>
+</html>
