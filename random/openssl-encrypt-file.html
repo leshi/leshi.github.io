@@ -59,45 +59,40 @@
         <p> Have them send you <i>id_rsa.pub.pem </i></p>
         <br/>
 
-        <h4>Step 1) Generate a 256 bit random key</h4>
-        <p> We need to do it in two parts because there is a limit on how much
-        of a key we can encrypt at once.</p>
-        <p class="code">openssl rand 128 &gt; key1.bin<br/> <br/>
-                        openssl rand 128 &gt; key2.bin<br/> <br/>
-                        cat key1.bin key2.bin &gt;&gt; key.bin</p><br/>
 
-        <h4>Step 2) Encrypt all the keys</h4>
+        <h4>Step 1) Generate a 256 bit (32 byte) random key</h4>
+        <p class="code">openssl rand 32 &gt; key.bin</p><br/>
+
+        <h4>Step 2) Encrypt the key</h4>
         <p class="code">
-             openssl rsautl -encrypt -inkey id_rsa.pub.pem -pubin -in key1.bin -out key1.bin.enc <br/><br/>
-             openssl rsautl -encrypt -inkey id_rsa.pub.pem -pubin -in key2.bin -out key2.bin.enc
+             openssl rsautl -encrypt -inkey id_rsa.pub.pem -pubin -in key.bin -out key.bin.enc
         </p><br/>
+
 
         <h4>Step 3) Actually Encrypt our large file</h4>
         <p class="code">
              openssl enc -aes-256-cbc -salt -in SECRET_FILE -out SECRET_FILE.enc -pass file:./key.bin
         </p><br/>
 
+
         <h4>Step 4) Send/Decrypt the files</h4>
         <p>Send the <em>.enc</em> files to the other person and have them do: </p>
         <p class="code">
-             openssl rsautl -decrypt -inkey id_rsa.pem -in key1.bin.enc -out key1.bin <br/> <br/>
-             openssl rsautl -decrypt -inkey id_rsa.pem -in key2.bin.enc -out key2.bin <br/> <br/>
-             cat key1.bin key2.bin &gt;&gt; key.bin <br/> <br/>
+             openssl rsautl -decrypt -inkey id_rsa.pem -in key.bin.enc -out key.bin <br/> <br/>
              openssl enc -d -aes-256-cbc -in SECRET_FILE.enc -out SECRET_FILE -pass file:./key.bin
         </p><br/>
 
-        <h4>Notes</h4>
-        <p> You should always verify the hash of the file or sign it with your
-            private key, so the other person knows it actually came from you.
-            The approach in this how-to will work most times if there is not a
-            sophisticated man-in-the-middle adversary inbetween you and the
-            person you're trying to reach.  If there is a mitm bad guy, then
-            he/she could substitute the other person's public key for his/her
-            own and then you're screwed.  So don't use this method if the
-            government is after you, but do use it if the only thing you care
-            about is the cloud e-mail provider you're using having access to
-            the file you're sending.</p>
 
+        <h4>Notes</h4>
+        <p> You should always verify the hash of the file with the recipient or
+            sign it with your private key, so the other person knows it
+            actually came from you.</p>
+        <p> The approach in this how-to should be sufficient unless there is
+            a man-in-the-middle adversary in-between you and the person you're
+            trying to reach.  If there is a mitm, then he/she could substitute
+            the other person's public key for his/her own and then you're
+            screwed.  <strong>Always</strong> verify the other person's public
+            key (take a hash and read it to each other over the phone).</p>
 
       <div id="qed">&#9632;</div>
     </div>
