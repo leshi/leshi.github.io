@@ -369,6 +369,8 @@ footer .footer-below {
     text-align: center;
     font-size: 20px;
     line-height: 45px;
+    margin-left: 5px;
+    margin-top: 5px;
 }
 
 .btn:focus,
