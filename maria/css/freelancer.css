@@ -205,6 +205,7 @@ section.success a.active {
 #portfolio .portfolio-item {
     right: 0;
     margin: 0 0 15px;
+    text-align: center;
 }
 
 #portfolio .portfolio-item .portfolio-link {
@@ -212,6 +213,11 @@ section.success a.active {
     position: relative;
     margin: 0 auto;
     max-width: 400px;
+}
+
+
+#portfolio .portfolio-item .portfolio-link img {
+    margin: 0 auto 0 auto;
 }
 
 #portfolio .portfolio-item .portfolio-link .caption {
@@ -260,7 +266,6 @@ section.success a.active {
 }
 
 .btn-outline {
-    margin-top: 15px;
     border: solid 2px #fff;
     font-size: 20px;
     color: #fff;
